@@ -6,6 +6,7 @@ import reportWebVitals from './reportWebVitals';
 
 ReactDOM.render(
   <React.StrictMode>
+    {/* render dashboard or front -view based on the user selection */}
     <App />
   </React.StrictMode>,
   document.getElementById('root')

@@ -1,0 +1,77 @@
+.action-screen{
+    width:100%;
+    height:100vh;
+    background:linear-gradient(var(--light-blue-1),var(--light-blue-2));
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color:white;
+
+}
+.action-buttons-wrapper button{
+    font-size:15px;
+    padding:15px 20px;
+    color:white;
+    font-weight:bold;
+    border:1px solid var(--light-blue-2);
+    border-radius:5px;
+    margin-right: 15px;
+    -webkit-border-radius:5px;
+    -moz-border-radius:5px;
+    -ms-border-radius:5px;
+    -o-border-radius:5px;
+    box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.47);
+}
+.landing-section{
+    background-color: var(--light-blue-1);
+    height:100vh;
+    display:flex;
+}
+.landing-text h1{
+    font-size:50px;
+    color:var(--light-blue-2)
+}
+#new-chart{
+    margin-top:40px;
+    background-color: var(--light-gray);
+    padding:20px;
+}
+.chat-text{
+    height:60%
+}
+.landing-text p{
+    color:white;
+}
+#new-chart input,#new-chart textarea{
+    box-sizing: border-box;
+    background-color: var(--light-gray);
+    border:none;
+    padding:10px;
+    width:100%;
+    border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    -ms-border-radius: 5px;
+    -o-border-radius: 5px;
+}
+label{
+    color:var(--light-blue-1)
+}
+.landing-heading{
+    flex:2;
+    display:flex;
+    align-items: center;
+    justify-content: center;
+}
+#new-chart form{
+    overflow: hidden;
+}
+#new-chart button{
+    
+    padding:10px;
+    color:white;
+    border:none;
+    float: right;
+    background-color: var(--light-blue-2);
+}

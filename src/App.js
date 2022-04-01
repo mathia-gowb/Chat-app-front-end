@@ -8,7 +8,7 @@ function App() {
   const [route,setRoute]=useState(null);
 
   if(route){
-    return route==="Dashboard"?<Dashboard/>:<LandingPage/>
+    return route==="Dashboard"?<Dashboard/>:<LandingPage userExists={false}/>
   }
   return (
       <div id="app">
@@ -25,7 +25,6 @@ function App() {
 
         </div>
     </div>
-     /* <Dashboard/> */
   )
 }
 

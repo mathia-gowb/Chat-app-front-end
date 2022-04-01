@@ -1,18 +1,19 @@
 import { FullMessage } from "./messaging/fullmessage";
+import { Recepient } from "./messaging/recepient";
 
-    export function MessageArea(){
+    export function MessageArea(props){
+        const messages=props.messages;
         return (
         <div id="messanger">
-            <div className="active-charter">
-                <div className="icon"><span>MN</span></div>
-                <div className="header">
-                    <h2>Mathobo Ngelekanyo</h2>
-                    <p className="last-message-time">Last Seen 10/02/2022 18:00</p>
-                </div>
-            </div>
+            <Recepient/>
             <div className="chat-text">
                 {/* output the message from fullmessage.js */}
-                <FullMessage></FullMessage>
+                <FullMessage
+                    messageType={"received"}
+                    fullMessage={"Mathobo ngelekayo wa itsani"}
+                    sender={"Ngekenayo"}
+                    messageTime={"01-april-2022 @ 18:00"}
+                />
                 
             </div>
             <div className="reply-box">

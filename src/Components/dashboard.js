@@ -18,7 +18,7 @@ export function Dashboard(){
         {/* output the sidebar from dashboard-sidebar */}
         <SideBar></SideBar>
         {/* output the messanger component from dashboard-messanger*/}
-        <MessageArea messages={""}/>
+        <MessageArea messages={""} isDashboard={true}/>
       </div>
     )
 }

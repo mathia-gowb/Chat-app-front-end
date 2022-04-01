@@ -1,11 +1,13 @@
+import { sendMessage } from "../functions/send-message";
 import { Recepient } from "./messaging/recepient";
 
 export function NewChart(){
+
     return (
         <div id="messanger">
             <Recepient></Recepient>
             <div id="new-chart">
-            <form action="" name="new-chart">
+            <form action="" name="new-chart" onSubmit={sendMessage}>
                 <label for="name">Your name</label>
                 <br/>
                 <br/>

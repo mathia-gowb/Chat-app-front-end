@@ -1,5 +1,6 @@
 import { FullMessage } from "./messaging/fullmessage";
 import { Recepient } from "./messaging/recepient";
+import { sendMessage } from "../functions/send-message";
 
     export function MessageArea(props){
         const messages=props.messages;
@@ -17,7 +18,7 @@ import { Recepient } from "./messaging/recepient";
                 
             </div>
             <div className="reply-box">
-                <form action="#">
+                <form action="#" onSubmit={sendMessage}>
                     <input type="text" placeholder="type reply message ..............."/>
                     <button type="submit"><i className="fa-solid fa-paper-plane"></i></button>
                 </form>

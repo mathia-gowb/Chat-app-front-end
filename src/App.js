@@ -1,31 +1,26 @@
 import './App.css';
 import './front-end.css';
 import { Dashboard } from './Components/dashboard';
-import {useState,useEffect} from 'react';
 import { LandingPage } from './Components/frontpage';
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+} from "react-router-dom";
+import { WelcomeScreen } from './Components/welcome-screen';
 
 function App() {
-  const [route,setRoute]=useState(null);
 
-  if(route){
-    return route==="Dashboard"?<Dashboard/>:<LandingPage userExists={false}/>
-  }
   return (
-      <div id="app">
-        <div className="action-screen">
-            <div className="action-screen-items">
-                <h1>Who are you?</h1>
-                <br/>
-                <br/>
-                <div className="action-buttons-wrapper">
-                    <button onClick={()=>setRoute('FrontEnd')}>Website Visitor</button>
-                    <button onClick={()=>setRoute('Dashboard')}>Website Admin</button>
-                </div>
-            </div>
-
-        </div>
-    </div>
+    <Router>
+      <Routes>
+        <Route path='/' element={<WelcomeScreen/>} />
+        <Route path='admin' element={<Dashboard/>} />
+        <Route path='public'  element={<LandingPage/>} />
+      </Routes>
+    </Router>
   )
+
 }
 
 export default App;

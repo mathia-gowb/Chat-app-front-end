@@ -1,5 +1,5 @@
 import { MessageArea } from "./dashboard-messager";
-import { NewChart } from "./new-chart";
+import { NewChart } from "./new-chat";
 import { Recepient } from "./messaging/recepient";
 
 export function LandingPage(props){

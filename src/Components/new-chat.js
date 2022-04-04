@@ -7,7 +7,7 @@ export function NewChart(){
         <div id="messanger">
             <Recepient></Recepient>
             <div id="new-chart">
-            <form action="" name="new-chart" onSubmit={sendMessage}>
+            <form action="" name="new-chat" onSubmit={sendMessage}>
                 <label for="name">Your name</label>
                 <br/>
                 <br/>

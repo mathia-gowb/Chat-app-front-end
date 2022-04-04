@@ -16,7 +16,8 @@ function App() {
       <Routes>
         <Route path='/' element={<WelcomeScreen/>} />
         <Route path='admin' element={<Dashboard/>} />
-        <Route path='public'  element={<LandingPage/>} />
+        <Route path='public'  element={<LandingPage userExists={false}/>} />
+        <Route path='/public/messages'  element={<LandingPage userExists={true}/>} />
       </Routes>
     </Router>
   )

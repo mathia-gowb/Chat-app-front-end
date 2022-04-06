@@ -10,7 +10,6 @@ import {
 import { WelcomeScreen } from './Components/welcome-screen';
 
 function App() {
-
   return (
     <Router>
       <Routes>
@@ -21,7 +20,5 @@ function App() {
       </Routes>
     </Router>
   )
-
 }
-
 export default App;

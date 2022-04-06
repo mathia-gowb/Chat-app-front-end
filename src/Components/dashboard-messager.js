@@ -1,9 +1,10 @@
 import { FullMessage } from "./messaging/fullmessage";
 import { Recepient } from "./messaging/recepient";
 import { sendMessage } from "../functions/send-message";
-
+import socket from "../configuration/socket-io";
     export function MessageArea(props){
         const messages=props.messages;
+        socket.on('RECEIVE_MESSAGE',(data)=>console.log(data))
         return (
         <div id="messanger">
             <Recepient/>

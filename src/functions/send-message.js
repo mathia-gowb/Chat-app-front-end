@@ -11,26 +11,19 @@ function handleResponseData(data){
 }
 export function sendMessage(event){
     event.preventDefault();
-    const endPoints={
-        admin:'/admin',
-        public:'/public',
-        messages:'/public'//if coming from public it will take the same endpoint as an existing user
-    }
-    const eventTarget=event.target
-    const messageValues={
-        messagerName:eventTarget.elements['name'].value,
-        message:eventTarget.elements['message'].value
-    }
-    
     /* filter url */
     const regex=/\w*$/gm;
+    const eventTarget=event.target;
     const formOrigin=(eventTarget.baseURI).match(regex)[0];
-/*     fetch(`${endPoints[formOrigin]}?name=${messageValues.messagerName}&message=${messageValues.message}`,
-    {method:'POST'})
-    .then(response=>response.json())
-    .then(data=>handleResponseData(data))  */
-    console.log(socket)
-    socket.emit('NEW_MESSAGE',messageValues)
-    
-}
 
+    switch(formOrigin) {
+        case 'admin':
+            socket.emit('NEW_ADMIN_MESSAGE',{message:'This is a new Message',name:'UserName',targetChatId:'targetUserId'})
+            break;
+        case 'message':
+            socket.emit('NEW_MESSAGE',{message:'This is a new Message',name:'UserName',chatId:'userId'})
+          break;
+        default:
+            socket.emit('NEW_CHAT',{message:'This is a new Message',name:'UserName'})
+      }
+}

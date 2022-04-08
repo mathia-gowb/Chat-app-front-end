@@ -1,8 +1,15 @@
+import {useState} from 'react'
 import { MessageArea } from "./dashboard-messager";
 import { NewChart } from "./new-chat";
 import { Recepient } from "./messaging/recepient";
+import io from 'socket.io-client';
+const socket=io.connect('http://localhost:5000');
 
 export function LandingPage(props){
+    const [currentChatId,setChatId]=useState(null);
+    socket.on('INITIATE_PRIVATE_CHART',(data)=>{
+        setChatId(data.chatId)
+    })
     return (
         <div className="landing-section">
         <div className="landing-heading">
@@ -13,7 +20,8 @@ export function LandingPage(props){
 
         </div>
         {/* if user already exist on the database show chat with previous chats, if the user does not exist out put the name and message form */}
-        {props.userExists?<MessageArea messages={""}/>:<NewChart/>}
+        
+        {currentChatId?<MessageArea chatId={currentChatId} messages={""}/>:<NewChart/>}
 
     </div>
     )

@@ -1,4 +1,4 @@
-import { MessageArea } from "./dashboard-messager";
+import { MessageArea } from "./message-area";
 import { SideBar } from "./dashboard-sidebar";
 import {useState,useEffect} from 'react';
 
@@ -18,7 +18,7 @@ export function Dashboard(){
         {/* output the sidebar from dashboard-sidebar */}
         <SideBar></SideBar>
         {/* output the messanger component from dashboard-messanger*/}
-        <MessageArea messages={""} isDashboard={true}/>
+        <MessageArea catId={0} isDashboard={true}/>
       </div>
     )
 }

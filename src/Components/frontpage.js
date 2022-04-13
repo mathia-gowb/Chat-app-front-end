@@ -20,6 +20,7 @@ export function LandingPage(props){
         });
         socket.on('RETURNED_MESSAGES',(data)=>{
             //change some state
+            console.log(data);
             setMessages(data)
         });
 

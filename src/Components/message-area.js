@@ -6,7 +6,7 @@ import io from 'socket.io-client';
 const socket=io.connect('http://localhost:5000');
 
     export function MessageArea(props){
-
+        console.log(props)
         const messageElements=props.messages.map(item=>{
             return <FullMessage
                         messageType={"received"}

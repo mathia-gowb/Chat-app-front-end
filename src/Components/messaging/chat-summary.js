@@ -1,17 +1,19 @@
+import { trimMessage,getLastMessage } from "../../functions/message-string-handlers";
 import { UserIcon } from "../user-icon";
 import { MessageTime } from "./message-time";
 
 export function MessageSummary(props){
+    const lastMessage=getLastMessage(props.messages);
     return (
-        <li class="chat">
+        <li className="chat">
             <UserIcon/>
-            <div class="chat-info">
-                <div class="chat-header">
-                    <h3>Mathobo Ngelekanyo</h3>
+            <div className="chat-info">
+                <div className="chat-header">
+                    <h3>{props.chatName}</h3>
                     <MessageTime/>
                 </div>
-                <div class="message">
-                    <p class="chat-message">This will be the preview message</p>
+                <div className="message">
+                    <p className="chat-message">{trimMessage(lastMessage)}</p>
                         {/* togle between showing unread and read messages */}
                         {props.showUnreadMessages?<div class="unread-messages"><span>10</span></div>:""}
                 </div>

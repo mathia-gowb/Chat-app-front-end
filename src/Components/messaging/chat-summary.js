@@ -1,11 +1,12 @@
 import { trimMessage,getLastMessage } from "../../functions/message-string-handlers";
 import { UserIcon } from "../user-icon";
 import { MessageTime } from "./message-time";
+import { Link } from "react-router-dom";
 
 export function MessageSummary(props){
     const lastMessage=getLastMessage(props.messages);
     return (
-        <li className="chat">
+        <li className="chat" data-chatid={props.chatId} onClick={props.clickHandler}>
             <UserIcon/>
             <div className="chat-info">
                 <div className="chat-header">
@@ -19,6 +20,7 @@ export function MessageSummary(props){
                 </div>
             </div>
         </li>
+
     )
 }
 

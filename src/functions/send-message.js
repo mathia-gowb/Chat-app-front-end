@@ -1,7 +1,6 @@
 import io from 'socket.io-client';
 const socket=io.connect('http://localhost:5000');
 
-
 export function sendMessage(event){
     event.preventDefault();
     /* filter url */
@@ -9,8 +8,8 @@ export function sendMessage(event){
     const eventTarget=event.target;
     const formOrigin=(eventTarget.baseURI).match(regex)[0];
     const targetId=eventTarget.id;
-    const messageText=eventTarget.elements[0].value;
-    console.log(eventTarget)
+
+    const messageText=eventTarget.elements['message'].value;
     //if element has id of no-chat then there is no previous chat
     if(targetId==='no-chat'){
         const userName=eventTarget.elements['name'].value;
@@ -18,7 +17,7 @@ export function sendMessage(event){
         return;
     }
     if(formOrigin==='admin'){
-        socket.emit('NEW_ADMIN_MESSAGE',{message:messageText,name:'UserName',targetChatId:targetId,admin:true})
+        socket.emit('NEW_ADMIN_MESSAGE',{message:messageText,name:'ADMIN',targetChatId:targetId,admin:true})
         return
     }
     if(formOrigin==='public'){
@@ -26,5 +25,4 @@ export function sendMessage(event){
         socket.emit('NEW_MESSAGE',{message:messageText,chatId:targetId,admin:false});
         return
     }
-
 }

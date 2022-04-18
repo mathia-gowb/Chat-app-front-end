@@ -18,7 +18,7 @@ export function NewChart(){
                 <label htmlFor="message">Your Message</label>
                 <br/>
                 <br/>
-                <textarea name="message" id="" cols="30" rows="10" defaultValue={"enter your message"}></textarea>
+                <textarea name="message" id="message" cols="30" rows="10" defaultValue={"enter your message"}></textarea>
                  <br/>
                  <br/>
                 <button>Send Message <s></s><i className="fa-solid fa-paper-plane"></i></button>

@@ -6,19 +6,24 @@ import io from 'socket.io-client';
 const socket=io.connect('http://localhost:5000');
 
     export function MessageArea(props){
-
+        console.log(`console loggin props.messages`,typeof props.messages)
         let messageElements="";
         if(props.messages){
             messageElements=props.messages.map(item=>{
                 return <FullMessage
-                            messageType={"received"}
                             fullMessage={item.messageContent}
+                            messageType={handleMessageSource(props.location,item)}
                             sender={"Ngekenayo"}
                             messageTime={"01-april-2022 @ 18:00"}
                         />
             })
         }
-        
+        function handleMessageSource(currentLocation,messageObject){
+            if(currentLocation==='admin'){
+                return messageObject.isAdmin&&currentLocation==='admin'?'':'received'
+            }
+            return !messageObject.isAdmin&&currentLocation==='public'?'':'received';
+        }
         return (
         <div id="messanger">
             <Recepient/>

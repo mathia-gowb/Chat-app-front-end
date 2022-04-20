@@ -17,7 +17,8 @@ export function sendMessage(event){
         return;
     }
     if(formOrigin==='admin'){
-        socket.emit('NEW_ADMIN_MESSAGE',{message:messageText,name:'ADMIN',targetChatId:targetId,admin:true})
+        console.log(targetId);
+        socket.emit('NEW_ADMIN_MESSAGE',{message:messageText,name:'ADMIN',chatId:targetId,admin:true})
         return
     }
     if(formOrigin==='public'){

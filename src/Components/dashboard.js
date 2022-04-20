@@ -9,11 +9,10 @@ export function Dashboard(){
     const [newMessage,setNewMessage]=useState(null);
 
     //when new chat initiated reload all messages
-    socket.on('DETECT_NEW_MESSAGE',(data)=>setNewMessage(data))
+    socket.on('DETECT_NEW_MESSAGE',(data)=>setNewMessage(data.messages))
 
     //when new message received from front end reload all messages
     socket.on('RETURNED_MESSAGES',(data)=>{
-      console.log(data)
       setNewMessage(data)
     })
     useEffect(()=>{
@@ -30,15 +29,17 @@ export function Dashboard(){
       const clickedChatId=event.currentTarget.dataset.chatid;
       setActiveChatId(clickedChatId);
       socket.emit('GET_MESSAGES',{chatId:clickedChatId})
-      setActiveChatId(event.currentTarget.dataset.chatid)
   }
     //detecting when new chat is initiated
+    const messageAreaWithContent=<MessageArea location={"admin"} messages={newMessage} chatId={activeChatId} isDashboard={true}/>
+    const emptyChat=<div className="empty-messages"><button>There are no messages at the moment</button> </div>
     return (
         <div id="app">
         {/* output the sidebar from dashboard-sidebar */}
         <SideBar chats={chats} handleChatClick={handleChatClick}/>
         {/* output the messanger component from dashboard-messanger*/}
-        <MessageArea messages={newMessage} chatId={activeChatId} isDashboard={true}/>
+        {activeChatId?messageAreaWithContent:emptyChat}
+        
       </div>
     )
 }

@@ -73,6 +73,8 @@ button,.icon{
 }
 .chats-list{
   margin-top:50px;
+  height:80vh;
+  overflow-y: scroll;
 }
 .reply-box{
   margin-top:20px;
@@ -106,6 +108,18 @@ button,.icon{
 .chat-info{
   flex:1;
   padding:0 20px;
+}
+.empty-messages{
+  background: linear-gradient(var(--dark-blue),var(--navy-light));
+  width:80%;
+  display:flex;
+  justify-content: center;
+  align-items: center;
+}
+.empty-messages button{
+  color:white;
+  border:none; 
+  padding:20px;
 }
 .message{
   width:100%;

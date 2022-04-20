@@ -34,7 +34,7 @@ export function LandingPage(props){
         </div>
         {/* if user already exist on the database show chat with previous chats, if the user does not exist out put the name and message form */}
         
-        {currentChatId?<MessageArea chatId={currentChatId} messages={messages}/>:<NewChart/>}
+        {currentChatId?<MessageArea location={"public"} chatId={currentChatId} messages={messages}/>:<NewChart/>}
 
     </div>
     )

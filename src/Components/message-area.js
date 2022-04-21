@@ -6,7 +6,6 @@ import io from 'socket.io-client';
 const socket=io.connect('http://localhost:5000');
 
     export function MessageArea(props){
-        console.log(`console loggin props.messages`,typeof props.messages)
         let messageElements="";
         if(props.messages){
             messageElements=props.messages.map(item=>{

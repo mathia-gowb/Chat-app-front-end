@@ -2,7 +2,6 @@ import { sendMessage } from "../functions/send-message";
 import { Recepient } from "./messaging/recepient";
 
 export function NewChart(){
-
     return (
         <div id="messanger">
             <Recepient></Recepient>

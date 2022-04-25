@@ -1,12 +1,12 @@
 import { sendMessage } from "../functions/send-message";
 import { Recepient } from "./messaging/recepient";
 
-export function NewChart(){
+export function NewChart(props){
     return (
         <div id="messanger">
             <Recepient></Recepient>
             <div id="new-chart">
-            <form action="" id="no-chat" name="new-chat" onSubmit={sendMessage}>
+            <form action="" class="no-chat" id={props.sessionId} name="new-chat" onSubmit={sendMessage}>
                 <label htmlFor="name">Your name</label>
                 <br/>
                 <br/>

@@ -11,9 +11,10 @@ export function sendMessage(event){
 
     const messageText=eventTarget.elements['message'].value;
     //if element has id of no-chat then there is no previous chat
-    if(targetId==='no-chat'){
+    if(eventTarget.className==='no-chat'){
         const userName=eventTarget.elements['name'].value;
-        socket.emit('NEW_CHAT',{message:messageText,name:userName,admin:false});
+        socket.emit('NEW_CHAT',{message:messageText,name:userName,admin:false,chatId:targetId});
+        socket.removeListener('NEW_CHAT',{})
         return;
     }
     if(formOrigin==='admin'){

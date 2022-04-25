@@ -4,7 +4,6 @@ import { Recepient } from "./messaging/recepient";
 import { sendMessage } from "../functions/send-message";
 import io from 'socket.io-client';
 const socket=io.connect('http://localhost:5000');
-
     export function MessageArea(props){
         let messageElements="";
         if(props.messages){

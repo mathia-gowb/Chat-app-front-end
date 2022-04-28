@@ -4,28 +4,36 @@ import { NewChart } from "./new-chat";
 import { Recepient } from "./messaging/recepient";
 import io from 'socket.io-client';
 import { createChatId } from '../functions/create-chatid';
-const socket=io.connect('http://localhost:5000');
+const socket= io.connect('http://localhost:5000');
 
 export function LandingPage(props){
-    let showPrevMessages=false;
-    const chatId=createChatId();
+    let [showPrevMessages,setShowPrevMessages]=useState(false);
     const [currentChatId,setChatId]=useState(null);
-    useEffect(()=>setChatId(chatId),[])
-    //initiate private chat once
-    socket.on('INITIATE_PRIVATE_CHAT',(data)=>{
-            showPrevMessages=true
+    useEffect(()=>{
+        const chatId=createChatId() ;
+        setChatId(chatId) ;
+  
+        socket.on('INITIATE_PRIVATE_CHAT',(data)=>{
+            setShowPrevMessages(true);
             socket.removeListener('INITIATE_PRIVATE_CHAT',()=>console.log('initiated new chat'));
         })
-    const [messages,setMessages]=useState([]);
+
         socket.on('DETECT_NEW_CHAT',(data)=>{
             /* WHEN A NEW MESSAGE IS ADDED TO THE DATABASE EMIT A GET_MESSAGES TO GET ALL THE MESSAGES FOR THIS CHAT */
-            socket.emit('GET_MESSAGES',{chatId:currentChatId,role:'getFirstChatMessages'})
+            socket.emit('GET_MESSAGES',{chatId:chatId,role:'getFirstChatMessages'})
             socket.removeListener('DETECT_NEW_CHAT',()=>console.log('new chat detected'));
         });
+    },[]);
+
+    const [messages, setMessages]=useState([]);
+    useEffect(()=>{
         socket.on('RETURNED_MESSAGES',(data)=>{
-            //change some state
+            //load all messages using fetch
+            
             setMessages(data);
         });
+    },[])
+
     return (
         <div className="landing-section">
             <div className="landing-heading">
@@ -35,7 +43,7 @@ export function LandingPage(props){
                 </div>
             </div>
             {/* if user already exist on the database show chat with previous chats, if the user does not exist out put the name and message form */}
-            {showPrevMessages?<MessageArea location={"public"} chatId={currentChatId} messages={messages}/>:<NewChart sessionId={chatId}/>}
+            {showPrevMessages?<MessageArea location={"public"} chatId={currentChatId} messages={messages}/>:<NewChart sessionId={currentChatId}/>}
         </div>
     )
 }

@@ -5,7 +5,7 @@ export function SideBar(props){
     let chats=props.chats;
     const chatsElements=chats.map(chat=>{
         return <MessageSummary
-                chatId={chat._id} 
+                chatId={chat.chatId} 
                 chatName={chat.clientName}
                 messages={chat.messages}
                 clickHandler={props.handleChatClick}

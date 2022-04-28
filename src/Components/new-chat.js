@@ -6,7 +6,7 @@ export function NewChart(props){
         <div id="messanger">
             <Recepient></Recepient>
             <div id="new-chart">
-            <form action="" class="no-chat" id={props.sessionId} name="new-chat" onSubmit={sendMessage}>
+            <form action="" className="no-chat" id={props.sessionId} name="new-chat" onSubmit={sendMessage}>
                 <label htmlFor="name">Your name</label>
                 <br/>
                 <br/>

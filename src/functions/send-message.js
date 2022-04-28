@@ -23,7 +23,6 @@ export function sendMessage(event){
         return
     }
     if(formOrigin==='public'){
-        console.log('sending message from public')
         socket.emit('NEW_MESSAGE',{message:messageText,chatId:targetId,admin:false});
         return
     }

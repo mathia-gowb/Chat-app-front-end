@@ -10,7 +10,7 @@ export function Dashboard(){
     //when new chat initiated reload all messages
     socket.on('DETECT_NEW_MESSAGE',(data)=>setNewMessage(data.messages))
     //when new message received from front end reload all messages
-    socket.on('RETURNED_MESSAGES',(data)=>{setNewMessage(data)});
+    socket.on('RETURNED_MESSAGES',(data)=>{setNewMessage(data.messages)});
     socket.on('MESSAGES_FOR_CURRENT_CHAT',(data)=>{
         setNewMessage(data)
     })

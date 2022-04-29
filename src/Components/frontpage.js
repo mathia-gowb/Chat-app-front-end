@@ -9,10 +9,10 @@ const socket= io.connect('http://localhost:5000');
 export function LandingPage(props){
     let [showPrevMessages,setShowPrevMessages]=useState(false);
     const [currentChatId,setChatId]=useState(null);
+    const [messages, setMessages]=useState([]);
     useEffect(()=>{
         const chatId=createChatId() ;
         setChatId(chatId) ;
-  
         socket.on('INITIATE_PRIVATE_CHAT',(data)=>{
             setShowPrevMessages(true);
             socket.removeListener('INITIATE_PRIVATE_CHAT',()=>console.log('initiated new chat'));
@@ -25,15 +25,17 @@ export function LandingPage(props){
         });
     },[]);
 
-    const [messages, setMessages]=useState([]);
     useEffect(()=>{
         socket.on('RETURNED_MESSAGES',(data)=>{
-            //load all messages using fetch
+            //filter incoming messages and only show the messages that matches this id
+            if(currentChatId===data.chatId){
+                setMessages(data.messages);
+            }
             
-            setMessages(data);
         });
-    },[])
+    },[currentChatId])
 
+    
     return (
         <div className="landing-section">
             <div className="landing-heading">

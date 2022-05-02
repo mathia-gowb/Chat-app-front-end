@@ -7,7 +7,7 @@ export function MessageSummary(props){
     const lastMessage=getLastMessage(props.messages);
     return (
         <li className="chat" data-chatid={props.chatId} onClick={props.clickHandler}>
-            <UserIcon/>
+            <UserIcon userName={props.chatName}/>
             <div className="chat-info">
                 <div className="chat-header">
                     <h3>{props.chatName}</h3>

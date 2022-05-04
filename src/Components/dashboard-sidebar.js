@@ -4,7 +4,10 @@ export function SideBar(props){
 
     let chats=props.chats;
     const chatsElements=chats.map(chat=>{
+        
         return <MessageSummary
+
+                active={props.activeChatId===chat.chatId}
                 chatId={chat.chatId} 
                 chatName={chat.clientName}
                 messages={chat.messages}

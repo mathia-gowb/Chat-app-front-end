@@ -15,7 +15,7 @@ export function Dashboard(){
         setNewMessage(data)
     })
     useEffect(()=>{
-      //loading all chats onfirst load
+      //loading all chats onfirst load and when new messages is sent
       fetch('/chats').then(response=>response.json()
       ).then(data=>setApiData(data))
     },[newMessage])
@@ -35,7 +35,7 @@ export function Dashboard(){
     return (
         <div id="app">
         {/* output the sidebar from dashboard-sidebar */}
-        <SideBar chats={chats} handleChatClick={handleChatClick}/>
+        <SideBar chats={chats} handleChatClick={handleChatClick} activeChatId={activeChatId}/>
         {/* output the messanger component from dashboard-messanger*/}
         {activeChatId?messageAreaWithContent:emptyChat}
       </div>

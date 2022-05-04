@@ -13,7 +13,7 @@ export function sendMessage(event){
     //if element has id of no-chat then there is no previous chat
     if(eventTarget.className==='no-chat'){
         const userName=eventTarget.elements['name'].value;
-        socket.emit('NEW_CHAT',{message:messageText,name:userName,admin:false,chatId:targetId});
+        socket.emit('NEW_CHAT',{message:messageText,name:userName,admin:false,chatId:targetId,isUnRead:true});
         socket.removeListener('NEW_CHAT',{})
         return;
     }
@@ -23,7 +23,7 @@ export function sendMessage(event){
         return
     }
     if(formOrigin==='public'){
-        socket.emit('NEW_MESSAGE',{message:messageText,chatId:targetId,admin:false});
+        socket.emit('NEW_MESSAGE',{message:messageText,chatId:targetId,admin:false,isUnRead:true});
         return
     }
 }

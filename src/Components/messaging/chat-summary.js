@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 export function MessageSummary(props){
     const lastMessage=getLastMessage(props.messages);
     return (
-        <li className="chat" data-chatid={props.chatId} onClick={props.clickHandler}>
+        <li className={`chat ${props.active?"active-chat":""}` } data-chatid={props.chatId} onClick={props.clickHandler}>
             <UserIcon userName={props.chatName}/>
             <div className="chat-info">
                 <div className="chat-header">

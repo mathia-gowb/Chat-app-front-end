@@ -17,7 +17,9 @@ export function Dashboard(){
     useEffect(()=>{
       //loading all chats onfirst load and when new messages is sent
       fetch('/chats').then(response=>response.json()
-      ).then(data=>setApiData(data))
+      ).then(data=>{
+        setApiData(data)
+      })
     },[newMessage])
     
     const [activeChatId,setActiveChatId]=useState();

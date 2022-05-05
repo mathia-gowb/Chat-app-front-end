@@ -6,7 +6,6 @@ export function SideBar(props){
     const chatsElements=chats.map(chat=>{
         
         return <MessageSummary
-
                 active={props.activeChatId===chat.chatId}
                 chatId={chat.chatId} 
                 chatName={chat.clientName}

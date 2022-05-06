@@ -1,3 +1,4 @@
+import { messageTimeFormat } from "../functions/messageTimeFormat";
 import { MessageSummary } from "./messaging/chat-summary";
 
 export function SideBar(props){
@@ -6,6 +7,7 @@ export function SideBar(props){
     const chatsElements=chats.map(chat=>{
         
         return <MessageSummary
+                messageTime={messageTimeFormat(chat.chatTime)}
                 active={props.activeChatId===chat.chatId}
                 chatId={chat.chatId} 
                 chatName={chat.clientName}

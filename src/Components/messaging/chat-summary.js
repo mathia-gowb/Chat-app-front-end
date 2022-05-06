@@ -22,12 +22,12 @@ export function MessageSummary(props){
             <div className="chat-info">
                 <div className="chat-header">
                     <h3>{props.chatName}</h3>
-                    <MessageTime/>
+                    <MessageTime messageTime={props.messageTime}/>
                 </div>
                 <div className="message">
                     <p className="chat-message">{trimMessage(lastMessage)}</p>
                         {/* togle between showing unread and read messages */}
-                        {!props.active&&unReadMessagesCount>0&&<div class="unread-messages"><span>{unReadMessagesCount}</span></div>}
+                        {!props.active&&unReadMessagesCount>0&&<div className="unread-messages"><span>{unReadMessagesCount}</span></div>}
                 </div>
             </div>
         </li>

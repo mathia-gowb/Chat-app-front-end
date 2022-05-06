@@ -3,16 +3,17 @@ import { FullMessage } from "./messaging/fullmessage";
 import { Recepient } from "./messaging/recepient";
 import { sendMessage } from "../functions/send-message";
 import io from 'socket.io-client';
+import { messageTimeFormat } from '../functions/messageTimeFormat';
 const socket=io.connect('http://localhost:5000');
     export function MessageArea(props){
         let messageElements="";
         if(props.messages){
-            messageElements=props.messages.map(item=>{
+            messageElements=props.messages.map(message=>{
                 return <FullMessage
-                            fullMessage={item.messageContent}
-                            messageType={handleMessageSource(props.location,item)}
-                            sender={"Ngekenayo"}
-                            messageTime={"01-april-2022 @ 18:00"}
+                            fullMessage={message.messageContent}
+                            messageType={handleMessageSource(props.location,message)}
+                            sender={message.isAdmin?'Admin':props.clientName}
+                            messageTime={messageTimeFormat(message.messsageTime)}
                         />
             })
         }

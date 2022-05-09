@@ -6,8 +6,7 @@ export function messageTimeFormat(timeOfActivity){
     const secondsPerHour=3600000;
     const secondsPerMinute=60000;
     const timeDifference=currentDate-originalDate
-    console.log('%c Log time', 'background: #222; color: #bada55',
-    timeOfActivity);
+
     if(timeDifference>=secondsPerDay){
         const days=Math.floor(timeDifference/secondsPerDay)
         return `${days} day${days>1?'s':''} ago`

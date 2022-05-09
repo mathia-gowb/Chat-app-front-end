@@ -14,7 +14,6 @@ export function LandingPage(props){
         const chatId=createChatId() ;
         setChatId(chatId) ;
         socket.on('INITIATE_PRIVATE_CHAT',(data)=>{
-            setShowPrevMessages(true);
             socket.removeListener('INITIATE_PRIVATE_CHAT',()=>console.log('initiated new chat'));
         })
 
@@ -35,7 +34,7 @@ export function LandingPage(props){
         });
     },[currentChatId])
 
-    
+    console.log('current messages',messages)
     return (
         <div className="landing-section">
             <div className="landing-heading">
@@ -45,7 +44,7 @@ export function LandingPage(props){
                 </div>
             </div>
             {/* if user already exist on the database show chat with previous chats, if the user does not exist out put the name and message form */}
-            {showPrevMessages?<MessageArea location={"public"} chatId={currentChatId} messages={messages}/>:<NewChart sessionId={currentChatId}/>}
+            {messages.length>0?<MessageArea location={"public"} chatId={currentChatId} adminName={"Admin"} messages={messages}/>:<NewChart sessionId={currentChatId}/>}
         </div>
     )
 }

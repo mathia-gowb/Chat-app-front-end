@@ -7,13 +7,15 @@ import { messageTimeFormat } from '../functions/messageTimeFormat';
 const socket=io.connect('http://localhost:5000');
     export function MessageArea(props){
         let messageElements="";
+        
+        console.log(" %c message ","color:red",props.messages)
         if(props.messages){
             messageElements=props.messages.map(message=>{
                 return <FullMessage
                             fullMessage={message.messageContent}
                             messageType={handleMessageSource(props.location,message)}
                             sender={message.isAdmin?'Admin':props.clientName}
-                            messageTime={messageTimeFormat(message.messsageTime)}
+                            messageTime={messageTimeFormat(message.messageTime)}
                         />
             })
         }
@@ -25,7 +27,7 @@ const socket=io.connect('http://localhost:5000');
         }
         return (
         <div id="messanger">
-            <Recepient/>
+            <Recepient clientName={props.clientName||props.adminName} chatTime={props.chatTime}/>
             <div className="chat-text">
                 {/* output the message from fullmessage.js */}
                 {messageElements}

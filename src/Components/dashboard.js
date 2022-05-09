@@ -7,6 +7,7 @@ const socket=io.connect('http://localhost:5000');
 export function Dashboard(){
     const [chats,setApiData]=useState(null);
     const [newMessage,setNewMessage]=useState(null);
+    const [activeChatTime,setActiveChatTime]=useState(null);
     //when new chat initiated reload all messages
     socket.on('DETECT_NEW_MESSAGE',(data)=>{
       setNewMessage(data.messages);
@@ -16,7 +17,8 @@ export function Dashboard(){
     socket.on('RETURNED_MESSAGES',(data)=>{setNewMessage(data.messages)});
     socket.on('MESSAGES_FOR_CURRENT_CHAT',(data)=>{
         setNewMessage(data.messages);
-        setActiveChatName(data.chatName)
+        setActiveChatName(data.chatName);
+        setActiveChatTime(data.chatTime)
     })
     useEffect(()=>{
       //loading all chats onfirst load and when new messages is sent
@@ -37,7 +39,15 @@ export function Dashboard(){
     }
 
     //detecting when new chat is initiated
-    const messageAreaWithContent=<MessageArea location={"admin"} clientName={activeChatName} messages={newMessage} chatId={activeChatId} isDashboard={true}/>
+    const messageAreaWithContent=(
+          <MessageArea 
+          location={"admin"} 
+          clientName={activeChatName} 
+          messages={newMessage}  
+          chatId={activeChatId} 
+          chatTime={activeChatTime}
+          isDashboard={true}/>
+          )
     const emptyChat=<div className="empty-messages"><button>There are no messages at the moment</button> </div>
     return (
         <div id="app">
